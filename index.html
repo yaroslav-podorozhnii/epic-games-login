@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Games - Prijava in Registracija</title>
+	<link rel="icon" type="image/png" href="epic-logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="form-card active" id="login-section">
+            <div class="form-content">
+                <div class="logo-container">
+                    <img src="epic-logo.png" alt="Epic Games" class="epic-logo">
+                </div>
+                <h2>Vpiši se v svoj račun</h2>
+                <p class="subtitle">Če že imaš račun Epic Games, se prijavi in nadaljuj z igranjem.</p>
+
+                <form onsubmit="event.preventDefault();">
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="E-poštni naslov" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Geslo" required>
+                        <i class="fa-regular fa-eye toggle-password"></i>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                            Zapomni si me
+                        </label>
+                        <a href="#" class="forgot-password">Pozabljeno geslo?</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">PRIJAVI SE</button>
+                </form>
+
+                <div class="divider">
+                    <span>ALI</span>
+                </div>
+
+                <div class="social-login">
+                    <a href="#" class="social-btn"><img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"></a>
+                    <a href="#" class="social-btn"><img src="https://www.svgrepo.com/show/511330/apple-173.svg" alt="Apple"></a>
+                </div>
+
+                <div class="switch-auth">
+                    Nimaš računa? <a href="#" id="to-register">Ustvari ga zdaj</a>
+                </div>
+            </div>
+
+            <div class="banner-side">
+                <div class="banner-overlay"></div>
+            </div>
+        </div>
+
+
+        <div class="form-card" id="register-section">
+            <div class="form-content">
+                <div class="logo-container">
+                   <img src="epic-logo.png" alt="Epic Games" class="epic-logo">
+                </div>
+                <h2>Ustvari nov račun</h2>
+                <p class="subtitle">Začni svojo pustolovščino v svetu Epic Games in dostopaj do vseh iger, ugodnosti in več.</p>
+
+                <form onsubmit="event.preventDefault();">
+                    <div class="input-group">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" placeholder="Ime in priimek" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="E-poštni naslov" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Geslo" required>
+                        <i class="fa-regular fa-eye toggle-password"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="Potrdi geslo" required>
+                        <i class="fa-regular fa-eye toggle-password"></i>
+                    </div>
+
+                    <button type="submit" class="btn-primary">USTVARI RAČUN</button>
+                </form>
+
+                <div class="divider">
+                    <span>ALI</span>
+                </div>
+
+                <div class="social-login">
+                    <a href="#" class="social-btn"><img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"></a>
+                    <a href="#" class="social-btn"><img src="https://www.svgrepo.com/show/511330/apple-173.svg" alt="Apple"></a>
+                </div>
+
+                <div class="switch-auth">
+                    Že imaš račun? <a href="#" id="to-login">Prijavi se</a>
+                </div>
+            </div>
+
+            <div class="banner-side">
+                <div class="banner-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginSection = document.getElementById('login-section');
+        const registerSection = document.getElementById('register-section');
+        const toRegister = document.getElementById('to-register');
+        const toLogin = document.getElementById('to-login');
+
+        toRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginSection.classList.remove('active');
+            registerSection.classList.add('active');
+        });
+
+        toLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerSection.classList.remove('active');
+            loginSection.classList.add('active');
+        });
+		document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', function () {
+            const input = this.previousElementSibling;
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    });
+	</script>
+</body>
+</html>
